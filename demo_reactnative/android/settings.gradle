@@ -1,0 +1,5 @@
+include ':topon_libs_china'
+//include ':topon_libs_nonchina'
+rootProject.name = 'demo_reactnative'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'

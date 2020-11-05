@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.libraryVariants.all { variant ->
+        if(variant.name.equalsIgnoreCase("release")) {
+            variant.outputs.all { output ->
+                def f = output.outputFileName
+                if (f != null && f.endsWith('.aar')) {
+                    def fileName = "anythink_reactnativejs_bridge.aar"
+                    output.outputFileName = fileName
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    maven {
+        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        url("$rootDir/../demo_reactnative/node_modules/react-native/android")
+    }
+}
+
+dependencies {
+    compileOnly fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    compileOnly 'com.facebook.react:react-native:+'
+}
+
+
+task copyTask {
+    doLast {
+        copy {
+            from 'build/outputs/aar/anythink_reactnativejs_bridge.aar'
+            into 'release/'
+        }
+        copy {
+            from 'build/outputs/aar/anythink_reactnativejs_bridge.aar'
+            into '../../demo_reactnative/android/app/libs/'
+        }
+    }
+}
+
+assemble.finalizedBy(copyTask)
