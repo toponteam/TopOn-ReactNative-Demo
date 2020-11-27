@@ -89,4 +89,10 @@ RCT_EXPORT_METHOD(showGDPRAuth) {
       //
   }];
 }
+
+RCT_EXPORT_METHOD(deniedUploadDeviceInfo:(NSArray *)deniedInfoArray) {
+  NSLog(@"deniedUploadDeviceInfo = %@", deniedInfoArray);
+  [[ATAPI sharedInstance] setDeniedUploadInfoArray:deniedInfoArray];
+}
+
 @end

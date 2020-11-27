@@ -28,11 +28,11 @@ export default class App extends Component {
          } else if (Platform.OS === 'ios') {
              this.appId = 'a5b0e8491845b3';
              this.appKey = '7eae0567827cfe2b22874061763f30c9';
-             this.rewardedVideoPlacementId = 'b5b44a02bf08c0';
-             this.interstitialPlacementId = 'b5bacad6860972';
-             this.bannerPlacementId = 'b5bacacef17717';
-             this.rewardedVideoScenarioId = '';
-             this.interstitialScenarioId = '';
+             this.rewardedVideoPlacementId = 'b5b44a0f115321';
+             this.interstitialPlacementId = 'b5bacad26a752a';
+             this.bannerPlacementId = 'b5bacaccb61c29';
+             this.rewardedVideoScenarioId = 'f5e54970dc84e6';
+             this.interstitialScenarioId = 'f5e549727efc49';
 
          }
 
@@ -89,13 +89,6 @@ export default class App extends Component {
                 console.log('userLocation: not in EU');
             }
        })
-
-       ATRNSDK.deniedUploadDeviceInfo(
-           [
-               ATRNSDK.INSTALLER,
-               ATRNSDK.MNC
-           ]
-       )
 
        console.log('TopOn SDK init ....')
        ATRNSDK.initSDK(this.appId, this.appKey);
@@ -230,8 +223,8 @@ export default class App extends Component {
 
   showRewardedVideo = () => {
     console.log('showRewardedVideo ....');
-    ATRewardedVideoRNSDK.showAd(this.rewardedVideoPlacementId);
-//    ATRewardedVideoRNSDK.showAdInScenario(this.rewardedVideoPlacementId, this.rewardedVideoScenarioId);
+    // ATRewardedVideoRNSDK.showAd(this.rewardedVideoPlacementId);
+   ATRewardedVideoRNSDK.showAdInScenario(this.rewardedVideoPlacementId, this.rewardedVideoScenarioId);
   };
 
   // Interstitial --------------------------------------------------------------------------------------------------------------------------
@@ -257,8 +250,8 @@ export default class App extends Component {
 
   showInterstitial = () => {
     console.log('showInterstitial ....');
-    ATInterstitialRNSDK.showAd(this.interstitialPlacementId);
-//    ATInterstitialRNSDK.showAdInScenario(this.interstitialPlacementId, this.interstitialScenarioId);
+    // ATInterstitialRNSDK.showAd(this.interstitialPlacementId);
+   ATInterstitialRNSDK.showAdInScenario(this.interstitialPlacementId, this.interstitialScenarioId);
   };
 
   // Banner --------------------------------------------------------------------------------------------------------------------------

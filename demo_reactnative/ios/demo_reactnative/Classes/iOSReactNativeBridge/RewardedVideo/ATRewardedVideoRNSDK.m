@@ -78,6 +78,16 @@ RCT_EXPORT_METHOD(hasAdReady: (NSString *)placementId promise: (RCTPromiseResolv
   promise(@(ready));
 }
 
+RCT_EXPORT_METHOD(checkAdStatus: (NSString *)placementId promise: (RCTPromiseResolveBlock)promise rejector:(RCTPromiseRejectBlock)reject) {
+  ATCheckLoadModel *checkLoadModel = [[ATAdManager sharedManager] checkRewardedVideoLoadStatusForPlacementID:placementId];
+  NSMutableDictionary *statusDict = [NSMutableDictionary dictionary];
+  statusDict[@"isLoading"] = @(checkLoadModel.isLoading);
+  statusDict[@"isReady"] = @(checkLoadModel.isReady);
+  statusDict[@"adInfo"] = checkLoadModel.adOfferInfo;
+  NSLog(@"ATRewardedVideoRNSDK::statusDict = %@", statusDict);
+  promise(statusDict.at_jsonString);
+}
+
 RCT_EXPORT_METHOD(showAd: (NSString *)placementId) {
   dispatch_async(dispatch_get_main_queue(), ^{
     [[ATAdManager sharedManager] showRewardedVideoWithPlacementID: placementId inViewController: [UIApplication sharedApplication].delegate.window.rootViewController delegate: [ATRewardedVideoRNSDK sharedWrapper]];
