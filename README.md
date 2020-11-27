@@ -1,15 +1,25 @@
-# TopOn ReactNative
+# TopOn-ReactNative-Demo for ReactNative
 
-[TopOn官网](https://app.toponad.com/)
-
-
-
-[TopOn React Native SDK集成文档](/Document/zh/reactnative_access_doc.md)
-
-[TopOn React Native Integration Guide](/Document/en/reactnative_access_doc.md)
+TopOn is an ad mediation platform that helps global app developers manage ad networks conveniently and maximize revenue lightly. Especially in China, TopOn becomes the Top #1 mediation platform. Until now, We have cooperated with around 400 companies. We have supported rich local advertising platform resources and lots of global ad platforms. 
 
 
+## Communication
+Official website ： https://www.toponad.com/
 
-[TopOn 错误码&常见问题](https://docs.toponad.com/#/zh-cn/android/android_doc/android_errorcode)
+Business Cooperation : business@toponad.com
 
-[TopOn ErrorCode&FAQ](https://docs.toponad.com/#/en-us/android/android_doc/android_errorcode)
+Market Cooperation : leon@toponad.com
+
+Technical Support : support@toponad.com
+
+QQ & wechat 188108875(Harry)
+
+
+
+## Integration instructions
+This project only contains TopOn SDK source code. If you need to test a third-party advertising platform, please download from the following URL
+
+https://docs.toponad.com/#/en-us/cocos/cocos_doc/cocos_access_doc
+## LICENSE
+
+See the [LICENSE](LICENSE) file.
